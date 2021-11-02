@@ -1,3 +1,4 @@
+
 import javax.swing.*;
 import java.awt.Font;
 import java.awt.event.*;
@@ -7,7 +8,7 @@ public class App extends JFrame  implements ActionListener {
     private JTextField password;
     private JButton submit;
     private JLabel label,lab;
-    private JPanel panel;
+    // private JPanel panel;
     private ImageIcon  image;
     public App(){
         setTitle("Login Portal");
