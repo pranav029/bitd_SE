@@ -1,8 +1,9 @@
-
+import main.msg;
 import javax.swing.*;
 import java.awt.Font;
 import java.awt.event.*;
 import java.awt.Image;
+import java.sql.*;
 public class App extends JFrame  implements ActionListener {
     private JTextField user_id;
     private JTextField password;
@@ -40,12 +41,27 @@ public class App extends JFrame  implements ActionListener {
     }
     public static void main(String args[]){
         new App();
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            System.out.println("Connection Established");
+            new msg("Connection Established","Pass");
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            // e.printStackTrace();
+            System.out.println("error occured");
+            new msg("Error Occured","Error");
+        }
     }
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
-        dispose();
-        new studentDetails();
+        // dispose();
+        if(e.getSource()==submit){
+            if(user_id.getText().toString().length()==0 ||
+              password.getText().toString().length()==0 ){
+                return;
+            }
+        }
     }
 }
 
