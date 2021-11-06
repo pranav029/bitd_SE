@@ -1,4 +1,3 @@
+public class subjectAllotment{
 
-public class subjectAllotment {
-    
 }

@@ -1,4 +1,15 @@
 {
-    "java.project.sourcePaths": ["src"],
-    "java.project.outputPath": "bin"
+    "java.project.sourcePaths": [
+        "src"
+    ],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": {
+        "include": [
+            "lib/**/*.jar"
+        ],
+        "exclude": [
+            "lib/mysql-connector-java-8.0.25.jar"
+        ]
+    },
+    "java.dependency.packagePresentation": "hierarchical"
 }

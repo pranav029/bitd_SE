@@ -1,4 +1,6 @@
- setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(null);
-        setVisible(true);
-        setResizable(false);
+
+        if(e.getSource()==submit){
+            if(user_id.getText().toString().length()==0 ||
+              password.getText().toString().length()==0 ){
+                  new msg("All Fields must be filled","Error",this);
+                return;

@@ -3,8 +3,9 @@ import javax.swing.*;
 import java.awt.Font;
 import java.awt.event.*;
 import java.awt.Image;
+import java.lang.Class;
 import java.sql.*;
-public class App extends JFrame  implements ActionListener {
+public class App extends JFrame implements ActionListener {
     private JTextField user_id;
     private JTextField password;
     private JButton submit;
@@ -41,16 +42,6 @@ public class App extends JFrame  implements ActionListener {
     }
     public static void main(String args[]){
         new App();
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("Connection Established");
-            new msg("Connection Established","Pass");
-        } catch (ClassNotFoundException e) {
-            // TODO Auto-generated catch block
-            // e.printStackTrace();
-            System.out.println("error occured");
-            new msg("Error Occured","Error");
-        }
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -59,9 +50,32 @@ public class App extends JFrame  implements ActionListener {
         if(e.getSource()==submit){
             if(user_id.getText().toString().length()==0 ||
               password.getText().toString().length()==0 ){
+                  new msg("All Fields must be filled","Error",this);
                 return;
             }
+            if(validate(user_id.getText().toString(),password.getText().toString())==true)new msg("Logined Successfully","Pass",this);
+            else {
+
+                new msg("Wrong Credentials","Error",App.this);
+            }
         }
+    }
+    private boolean validate(String id,String pass){
+         String url="jdbc:mysql://localhost:3306/cse_module";
+         String user="root";
+         String pa="Pranav@2046";
+         try {
+             Class.forName("com.mysql.cj.jdbc.Driver");
+             Connection con=DriverManager.getConnection(url, user, pa);
+             Statement st=con.createStatement();
+             ResultSet res=st.executeQuery("select user_password from login where user_id='"+id+"'"); 
+             if(res.next() && pass.equals(res.getString(1)))return true;
+         } catch (Exception e) {
+             //TODO: handle exception
+             System.out.println(e);
+             return false;
+         }
+         return false;
     }
 }
 
