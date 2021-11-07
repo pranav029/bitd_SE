@@ -17,14 +17,14 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.Vector;
 
-public class studentDisp extends JFrame implements ActionListener{
+public class studentDisp extends JPanel implements ActionListener{
     private JScrollPane pane;
     private JPanel panel,contentPane;
     private JLabel label,name;
     private JButton bt;
     private JTable tab;
     public studentDisp(){
-        setTitle("All Student Records");
+        // setTitle("All Student Records");
         label=new JLabel("All Student Records");
         label.setFont(new Font("Arial",Font.PLAIN,30));
         panel=new JPanel();
@@ -46,11 +46,11 @@ public class studentDisp extends JFrame implements ActionListener{
         add(bt);
         add(pane);
         setSize(700,600);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         setVisible(true);
-        setResizable(false);
-        getContentPane().add(pane, BorderLayout.CENTER);
+        // setResizable(false);
+        // getContentPane().add(pane, BorderLayout.CENTER);
     }
     public static void main(String args[]){
         new studentDisp();

@@ -1,3 +1,4 @@
+
 import main.msg;
 import javax.swing.*;
 import java.awt.Font;
@@ -10,9 +11,10 @@ public class App extends JFrame implements ActionListener {
     private JTextField password;
     private JButton submit;
     private JLabel label,lab;
+
     // private JPanel panel;
-    private ImageIcon  image;
     public App(){
+        ImageIcon  image;
         setTitle("Login Portal");
         image=new ImageIcon("images/220px-Birla_Institute_of_Technology_Mesra.png");
         Image temp = image.getImage().getScaledInstance(120,120, Image.SCALE_DEFAULT);
@@ -35,10 +37,10 @@ public class App extends JFrame implements ActionListener {
         add(password);
         add(submit);
         setSize(400,500);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null); 
         setResizable(false);
         setVisible(true);
+       
     }
     public static void main(String args[]){
         new App();
@@ -53,7 +55,10 @@ public class App extends JFrame implements ActionListener {
                   new msg("All Fields must be filled","Error",this);
                 return;
             }
-            if(validate(user_id.getText().toString(),password.getText().toString())==true)new msg("Logined Successfully","Pass",this);
+            if(validate(user_id.getText().toString(),password.getText().toString())==true){
+               dispose();
+                new dashboard();
+            }
             else {
 
                 new msg("Wrong Credentials","Error",App.this);
@@ -81,4 +86,5 @@ public class App extends JFrame implements ActionListener {
 
 
 
-
+// BTECH/60077/19
+//mynamenaman
