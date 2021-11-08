@@ -1,6 +1,8 @@
 // package main;
+import javax.imageio.ImageIO;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,8 +15,12 @@ import javax.swing.table.DefaultTableModel;
 
 import org.w3c.dom.events.MouseEvent;
 
+import main.panelbg;
+
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.Vector;
 
 public class studentDisp extends JPanel implements ActionListener{
@@ -23,8 +29,17 @@ public class studentDisp extends JPanel implements ActionListener{
     private JLabel label,name;
     private JButton bt;
     private JTable tab;
+    private Image bgImage;
     public studentDisp(){
         // setTitle("All Student Records");
+        JPanel bg=new panelbg("images/v915-wit-005.jpg");
+        bg.setSize(700,600);
+        bg.setLayout(null);
+        try {
+            bgImage = ImageIO.read(new File("images/v915-wit-005.jpg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         label=new JLabel("All Student Records");
         label.setFont(new Font("Arial",Font.PLAIN,30));
         panel=new JPanel();
@@ -43,8 +58,9 @@ public class studentDisp extends JPanel implements ActionListener{
         tab=new JTable(def);
         pane=new JScrollPane(tab);
         pane.setBounds(40,80,600,400);
-        add(bt);
-        add(pane);
+        bg.add(bt);
+        bg.add(pane);
+        add(bg);
         setSize(700,600);
         // setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
@@ -61,5 +77,7 @@ public class studentDisp extends JPanel implements ActionListener{
          DefaultTableModel def=(DefaultTableModel) tab.getModel();
          def.addRow(new Object[]{"Pranav","BTECH/60077/19","5"});
     }
+
+   
 
 }

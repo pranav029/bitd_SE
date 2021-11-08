@@ -4,5 +4,5 @@ import java.util.*;
 import javax.swing.JPanel;
 public class stack {
     public static Stack<JPanel> Stack ;
-    public static JPanel current;
+    public static Stack<String> title;
 }

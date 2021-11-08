@@ -1,1 +1,1 @@
-BTECH/60077/19
+ label.setFont(new Font("Arial",Font.PLAIN,30));

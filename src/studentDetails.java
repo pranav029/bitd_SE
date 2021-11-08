@@ -1,4 +1,7 @@
-
+import main.panelbg;
+import main.stack;
+import main.custombtn;
+import main.msg;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -8,13 +11,16 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.Color;
 import javax.swing.SwingUtilities;
-public class studentDetails extends JPanel implements ActionListener{
-    private JLabel label,nLable,idLabel;
+public class studentDetails extends JPanel implements ActionListener,MouseListener{
+    private JLabel label,nLable,idLabel,or,lab1;
     private JButton submit;
     private JTextField name,id;
-
+    private JPanel opt1;
     public studentDetails(){
         // setTitle("Student Details");
+        JPanel bg=new panelbg("images/v915-wit-005.jpg");
+        bg.setSize(700,600);
+        bg.setLayout(null);
         label=new JLabel("Search Student Details");
         nLable=new JLabel("Enter Student Name");
         idLabel=new JLabel("Enter Student Roll No");
@@ -29,37 +35,72 @@ public class studentDetails extends JPanel implements ActionListener{
         id.setBounds(130,300,400,40);
         submit.setBounds(270,400,100,40);
         submit.addActionListener(this);
-        add(label);
-        add(nLable);
-        add(name);
-        add(idLabel);
-        add(id);
-        add(submit);
+        or=new JLabel("OR");
+        or.setFont(new Font("Arial",Font.PLAIN,15));
+        or.setBounds(310,445,100,30);
+        lab1=new JLabel("All Student List");
+         lab1.setFont(new Font("Arial",Font.PLAIN,20));
+         lab1.setBounds(55,10,150,30);
+         opt1=new custombtn(50,"#dd5e89","#f7bb97",bg) ;
+         opt1.setBounds(200,480,250,50);
+         opt1.setLayout(null);
+         opt1.add(lab1);
+         opt1.addMouseListener(this);
+        bg.add(label);
+        bg.add(nLable);
+        bg.add(name);
+        bg.add(idLabel);
+        bg.add(id);
+        bg.add(submit);
+        bg.add(or);
+        bg.add(opt1);
+        add(bg);
         setSize(700,600);
         setLayout(null);
         setVisible(true);
         // setResizable(false);
     }
-    public static void main(String args[]){
-        new studentDetails();
-    }
+    // public static void main(String args[]){
+    //     new studentDetails();
+    // }
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
-          dashboard.update(new studentDisp());
+        if(e.getSource()==submit){
+            if(name.getText().toString().length()==0 ||
+              id.getText().toString().length()==0){
+                  new msg("All Fields must be filled","Error",dashboard.f);
+                  return;
+              }
+        }
     }
-
     @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        Graphics2D g2d = (Graphics2D) g;
-        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-        int w = getWidth();
-        int h = getHeight();
-        Color color1 =Color.decode("#ddd6f3");
-        Color color2 = Color.decode("#faaca8");
-        GradientPaint gp = new GradientPaint(0, 0, color1, 0, h, color2);
-        g2d.setPaint(gp);
-        g2d.fillRect(0, 0, w, h);
+    public void mouseClicked(MouseEvent e) {
+        // TODO Auto-generated method stub
+        if(e.getSource()==opt1){
+            stack.Stack.push(new studentDisp());
+            stack.title.push("Display Details");
+             dashboard.update();
+        }
+    }
+    @Override
+    public void mousePressed(MouseEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public void mouseExited(MouseEvent e) {
+        // TODO Auto-generated method stub
+        
     }
 }

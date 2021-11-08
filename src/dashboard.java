@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 
 
 public class dashboard extends JFrame implements MouseListener  {
-    private static JFrame f;
+    public static JFrame f;
     private JPanel panel,userpanel;
     public static JPanel panel2;
     private JLabel user,copyright,type;
@@ -30,6 +30,7 @@ public class dashboard extends JFrame implements MouseListener  {
         userpanel.setOpaque(false);
         userpanel.setLayout(new BoxLayout(userpanel,BoxLayout.Y_AXIS));
         stack.Stack=new Stack<JPanel>();
+        stack.title=new Stack<String>();
         setTitle("Dashboard");
         // BufferedImage buttonIcon=null;
         // try {
@@ -66,9 +67,11 @@ public class dashboard extends JFrame implements MouseListener  {
         panel2=new JPanel();
         panel2.setBounds(0,65,700,600);
         panel2.setBackground(Color.WHITE);
-        JPanel temp=new studentDetails();
+        // JPanel temp=new studentDetails();
+        JPanel temp=new dashMenu();
         panel2.add(temp);
-        stack.current=temp;
+        stack.Stack.push(temp);
+        stack.title.push("Dashboard");
         panel2.setLayout(null);
         add(panel);
         add(panel2);
@@ -78,21 +81,19 @@ public class dashboard extends JFrame implements MouseListener  {
         setLayout(null);
         setVisible(true);
         setResizable(false);
-        if(stack.Stack.size()==0)back.setVisible(false);
+        if(stack.Stack.size()==1)back.setVisible(false);
         f=this;
     }
     
     // public static void main(String args[]){
     //      f=new dashboard();
     // }
-    public static void update(JPanel pan){
+    public static void update(){
             panel2.removeAll();
-            panel2.add(pan);
+            panel2.add(stack.Stack.peek());
             panel2.revalidate();
             panel2.repaint();
-            f.setTitle("hello");
-            stack.Stack.push(stack.current);
-            stack.current=pan;
+            f.setTitle(stack.title.peek());
             back.setVisible(true);
     }
 
@@ -101,12 +102,12 @@ public class dashboard extends JFrame implements MouseListener  {
     public void mouseClicked(MouseEvent e) {
         // TODO Auto-generated method stub
         if(e.getSource()==back){
-            JPanel temp=stack.Stack.peek();
+            // JPanel temp=stack.Stack.peek();
             stack.Stack.pop();
-            stack.current=temp;
-            update(temp);
-            if(stack.Stack.empty()==true)back.setVisible(false);
-            if(stack.Stack.peek()==stack.current)back.setVisible(false);
+            stack.title.pop();
+            update();
+            if(stack.Stack.size()==1 && stack.title.size()==1)back.setVisible(false);
+            // if(stack.Stack.peek()==stack.current)back.setVisible(false);
         }
         
     }
@@ -133,6 +134,9 @@ public class dashboard extends JFrame implements MouseListener  {
     public void mouseExited(MouseEvent e) {
         // TODO Auto-generated method stub
         
+    }
+    public static void main(String args[]){
+        new dashboard();
     }
    
 }

@@ -1,17 +1,19 @@
 import javax.swing.*;
+
+import main.panelbg;
+
 import java.awt.*;
 import java.awt.event.*;
-public class uploadMarks extends JFrame implements ActionListener {
+public class uploadMarks extends JPanel implements ActionListener {
     private JLabel semLabel,label,rLabel,mLabel,sLabel,warning,img;
     private JTextField roll,marks;
     private JComboBox<String> subs,sem;
     private JButton submit;
     private JPanel panel;
     public uploadMarks(){
-        img=new JLabel(new ImageIcon("images/220px-Birla_Institute_of_Technology_Mesra.png"));
-        panel=new JPanel();
+        panel=new panelbg("images/v915-wit-005.jpg");
         panel.setSize(700,600);
-        setTitle("Upload Marks");
+        // setTitle("Upload Marks");
         String s[]={"1","2","3","4","5","6","7","8"};
         String sub[]={"Maths","DBMS","DAA"};
         label=new JLabel("Upload Marks");
@@ -39,6 +41,8 @@ public class uploadMarks extends JFrame implements ActionListener {
         warning.setFont(new Font("Arial",Font.ITALIC,18));
         warning.setBounds(260,440, 200,30);
         warning.setForeground(new Color(255,0,0));
+        panel.setLayout(null);
+        panel.setSize(700,600);
         panel.add(label);
         panel.add(semLabel);
         panel.add(sem);
@@ -50,17 +54,12 @@ public class uploadMarks extends JFrame implements ActionListener {
         panel.add(marks);
         panel.add(submit);
         panel.add(warning);
-        panel.setLayout(null);
+        add(panel);
         setSize(700,600);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         setVisible(true);
-        setResizable(false);
-        img.setBounds(0,0,700,600);
-        img.setLayout(null);
-        img.add(panel);
-        add(img);
-       
+        // setResizable(false);
     }
     public static void main(String args[]){
         new uploadMarks();

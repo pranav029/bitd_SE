@@ -85,6 +85,3 @@ public class App extends JFrame implements ActionListener {
 }
 
 
-
-// BTECH/60077/19
-//mynamenaman
