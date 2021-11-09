@@ -46,13 +46,13 @@ public class dashboard extends JFrame implements MouseListener  {
         // back.setBorder(BorderFactory.createEmptyBorder());
         back.setBounds(0,10,80,30);
         back.addMouseListener(this);
-        panel=new newPanel("#1d976c","#93f9b9");
+        panel=new newPanel("#171717","#171717");
         panel.setBounds(0,0,700,60);
         panel.setBackground(Color.darkGray);
         user =new JLabel("Random Kumar Agnihotri");
         user.setFont(new Font("Arial",Font.PLAIN,16));
         user.setBounds(420,10,250,30);
-        user.setForeground(Color.black);
+        user.setForeground(Color.decode("#FD7F20"));
         type=new JLabel("Faculty");
         type.setFont(new Font("Bank Gothic",Font.ITALIC,13));
         type.setBounds(480,25,150,30);

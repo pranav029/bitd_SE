@@ -6,6 +6,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import main.panelbg;
@@ -14,7 +15,8 @@ public class addStudentDetails extends JPanel{
     private JPanel bg;
     private JLabel label,nLab,rLab,adLab,geLab,caLab,seLab,DOB,hint,phLab;
     private JButton submit;
-    private JTextField name,roll,address,phone;
+    private JTextArea roll,address,phone;
+    private JTextArea name;
     private JComboBox<String> gender,category,semester,day,mon,year;
     public addStudentDetails(){
         bg=new panelbg("images/v915-wit-005.jpg");
@@ -25,11 +27,13 @@ public class addStudentDetails extends JPanel{
         label.setFont(new Font("Arial",Font.PLAIN,30));
         nLab=new JLabel("Name");
         nLab.setBounds(100,100,400,80);
-        name=new JTextField();
+        name=new JTextArea(3,0);
+        name.setLineWrap(true);
         name.setBounds(160,122,400,40);
         rLab=new JLabel("Roll");
         rLab.setBounds(100,155,400,80);
-        roll=new JTextField();
+        roll=new JTextArea(1,1);
+        roll.setLineWrap(true);
         roll.setBounds(160,178,400,40);
         geLab=new JLabel("Gender");
         geLab.setBounds(100,198,400,80);
@@ -56,11 +60,12 @@ public class addStudentDetails extends JPanel{
         hint.setForeground(Color.red);
         adLab=new JLabel("Address");
         adLab.setBounds(100,360,400,80);
-        address=new JTextField();
+        address=new JTextArea(3,1);
+        address.setLineWrap(true);
         address.setBounds(160,385,400,50);
         phLab=new JLabel("Phone");
         phLab.setBounds(100,420,400,80);
-        phone=new JTextField();
+        phone=new JTextArea(1,1);
         phone.setBounds(160,445,400,30);
         submit=new JButton("Submit");
         submit.setBounds(300,500,100,30);
@@ -96,3 +101,4 @@ public class addStudentDetails extends JPanel{
     }
     
 }
+

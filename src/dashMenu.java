@@ -3,6 +3,8 @@ import main.panelbg;
 import main.newPanel;
 import main.custombtn;
 import main.stack;
+
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.*;
 import javax.swing.JFrame;
@@ -10,8 +12,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class dashMenu extends JPanel implements MouseListener {
-    private JPanel opt1,opt2,opt3,opt4,opt5,opt6,panel;
+    private custombtn opt1,opt2,opt3,opt4,opt5,opt6;
+    private JPanel panel;
     private JLabel lab1,lab2,lab4,lab5,lab6;
+    private boolean pressed;
     public dashMenu(){
          panel=new panelbg("images/v915-wit-005.jpg");
          lab1=new JLabel("Student Detais");
@@ -31,6 +35,7 @@ public class dashMenu extends JPanel implements MouseListener {
          lab6.setBounds(70,0,150,50);
          opt1=new custombtn(50,"#dd5e89","#f7bb97",panel) ;
          opt1.setBounds(50,100,250,50);
+        opt1.setOpaque(false);
          opt1.setLayout(null);
          opt1.add(lab1);
          opt1.addMouseListener(this);
@@ -41,12 +46,14 @@ public class dashMenu extends JPanel implements MouseListener {
          opt2.setBounds(50,220,250,50);
          opt3=new custombtn(50,"#dd5e89","#f7bb97",panel) ;
          opt3.setBounds(50,350,250,50);
+         opt3.addMouseListener(this);
          opt4=new custombtn(50,"#dd5e89","#f7bb97",panel) ;
          opt4.setBounds(380,100,250,50);
          opt4.add(lab4);
          opt4.setLayout(null);
          opt4.addMouseListener(this);
          opt5=new custombtn(50,"#dd5e89","#f7bb97",panel) ;
+         opt5.addMouseListener(this);
          opt5.add(lab5);
          opt5.setLayout(null);
          opt5.setBounds(380,220,250,50);
@@ -79,6 +86,7 @@ public class dashMenu extends JPanel implements MouseListener {
             stack.Stack.push(new studentDetails());
             stack.title.push("Student Details");
             dashboard.update();
+            opt1.setOpaque(true);
         }
         if(e.getSource()==opt4){
             stack.Stack.push(new addStudentDetails());
@@ -99,21 +107,95 @@ public class dashMenu extends JPanel implements MouseListener {
     @Override
     public void mousePressed(MouseEvent e) {
         // TODO Auto-generated method stub
-        
+        if(e.getSource()==opt1){
+            opt1.reColor("#dd5e89","#f7bb97");
+            opt1.repaint();
+        }else if(e.getSource()==opt2){
+            opt2.reColor("#dd5e89","#f7bb97");
+         opt2.repaint();
+        }else if(e.getSource()==opt3){
+            opt3.reColor("#dd5e89","#f7bb97");
+         opt3.repaint();
+        }else if(e.getSource()==opt4){
+            opt4.reColor("#dd5e89","#f7bb97");
+         opt4.repaint();
+        }else if(e.getSource()==opt5){
+            opt5.reColor("#dd5e89","#f7bb97");
+         opt5.repaint();
+        }else if(e.getSource()==opt6){
+            opt6.reColor("#dd5e89","#f7bb97");
+         opt6.repaint();
+        }
     }
     @Override
     public void mouseReleased(MouseEvent e) {
         // TODO Auto-generated method stub
-        
+      
+        if(e.getSource()==opt1){
+            opt1.reColor("#f7bb97","#dd5e89");
+            opt1.repaint();
+        }else if(e.getSource()==opt2){
+         opt2.reColor("#f7bb97","#dd5e89");
+         opt2.repaint();
+        }else if(e.getSource()==opt3){
+         opt3.reColor("#f7bb97","#dd5e89");
+         opt3.repaint();
+        }else if(e.getSource()==opt4){
+         opt4.reColor("#f7bb97","#dd5e89");
+         opt4.repaint();
+        }else if(e.getSource()==opt5){
+         opt5.reColor("#f7bb97","#dd5e89");
+         opt5.repaint();
+        }else if(e.getSource()==opt6){
+         opt6.reColor("#f7bb97","#dd5e89");
+         opt6.repaint();
+        }
     }
     @Override
     public void mouseEntered(MouseEvent e) {
         // TODO Auto-generated method stub
-        
+        if(e.getSource()==opt1){
+            opt1.reColor("#f7bb97","#dd5e89");
+            opt1.repaint();
+        }else if(e.getSource()==opt2){
+         opt2.reColor("#f7bb97","#dd5e89");
+         opt2.repaint();
+        }else if(e.getSource()==opt3){
+         opt3.reColor("#f7bb97","#dd5e89");
+         opt3.repaint();
+        }else if(e.getSource()==opt4){
+         opt4.reColor("#f7bb97","#dd5e89");
+         opt4.repaint();
+        }else if(e.getSource()==opt5){
+         opt5.reColor("#f7bb97","#dd5e89");
+         opt5.repaint();
+        }else if(e.getSource()==opt6){
+         opt6.reColor("#f7bb97","#dd5e89");
+         opt6.repaint();
+        }
+      
     }
     @Override
     public void mouseExited(MouseEvent e) {
         // TODO Auto-generated method stub
-        
+        if(e.getSource()==opt1){
+            opt1.reColor("#dd5e89","#f7bb97");
+            opt1.repaint();
+        }else if(e.getSource()==opt2){
+            opt2.reColor("#dd5e89","#f7bb97");
+         opt2.repaint();
+        }else if(e.getSource()==opt3){
+            opt3.reColor("#dd5e89","#f7bb97");
+         opt3.repaint();
+        }else if(e.getSource()==opt4){
+            opt4.reColor("#dd5e89","#f7bb97");
+         opt4.repaint();
+        }else if(e.getSource()==opt5){
+            opt5.reColor("#dd5e89","#f7bb97");
+         opt5.repaint();
+        }else if(e.getSource()==opt6){
+            opt6.reColor("#dd5e89","#f7bb97");
+         opt6.repaint();
+        }
     }
 }

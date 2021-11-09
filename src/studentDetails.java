@@ -71,7 +71,12 @@ public class studentDetails extends JPanel implements ActionListener,MouseListen
               id.getText().toString().length()==0){
                   new msg("All Fields must be filled","Error",dashboard.f);
                   return;
+              }else{
+                  stack.Stack.push(new studentinfo());
+                  stack.title.push("Student Details");
+                  dashboard.update();
               }
+              
         }
     }
     @Override

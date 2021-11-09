@@ -48,5 +48,9 @@ public class custombtn extends JPanel  {
             // graphics.drawRoundRect(0, 0, width-1, height-1, arcs.width, arcs.height); //paint border
             // graphics.fillRect(0, 0, width, height);
         }
+        public void reColor(String col1,String col2){
+            this.col1=col1;
+            this.col2=col2;
+        }
     
 }
