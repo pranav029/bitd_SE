@@ -7,13 +7,16 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
-
+import java.sql.*;
 import javax.swing.SwingUtilities;
+import java.util.Vector;
 public class studentDetails extends JPanel implements ActionListener,MouseListener{
     private JLabel label,nLable,idLabel,or,lab1,lab2;
     private JButton submit;
     private JTextField name,id;
     private custombtn opt1,opt2;
+    private Vector<String> dis;
+    private boolean flag=true;
     public studentDetails(){
         // setTitle("Student Details");
         JPanel bg=new panelbg("images/v915-wit-005.jpg");
@@ -64,6 +67,7 @@ public class studentDetails extends JPanel implements ActionListener,MouseListen
          opt1.setLayout(null);
          opt1.add(lab1);
          opt1.addMouseListener(this);
+         dis=new Vector<String>();
         bg.add(label);
         bg.add(nLable);
         bg.add(name);
@@ -104,7 +108,12 @@ public class studentDetails extends JPanel implements ActionListener,MouseListen
                   new msg("All Fields must be filled","Error",dashboard.f);
                   return;
               }else{
-                  stack.Stack.push(new studentinfo());
+                  db();
+                  if(flag==false){
+                    new msg("Please verify entered data","Error",dashboard.f);
+                      return;
+                  }
+                  stack.Stack.push(new studentinfo(dis));
                   stack.title.push("Student Details");
                   dashboard.update();
                   opt2.reColor("#3cd10c","#3cd10c");
@@ -163,4 +172,35 @@ public class studentDetails extends JPanel implements ActionListener,MouseListen
          opt2.repaint();
         }
     }
+    private void db(){
+        String url="jdbc:mysql://localhost:3306/cse_module";
+        String user="root";
+        String pass="Pranav@2046";
+        String[] emp={""};
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con=DriverManager.getConnection(url, user, pass);
+            Statement st=con.createStatement();
+            String in=id.getText();
+            ResultSet res=st.executeQuery("select * from student_details where roll_no='"+in+"'"); 
+            if(res.getFetchSize()==0)flag=false;
+            if(res.next()){
+                System.out.println("Hello ji");
+                dis.add(res.getString(2));
+                dis.add(res.getString(1));
+                dis.add(res.getString(7));
+                dis.add(res.getString(4));
+                dis.add(res.getString(6));
+                dis.add(res.getString(5));
+                dis.add(res.getString(3));
+                dis.add(res.getString(8));
+            }
+            if(dis.size()==0)flag=false;
+        } catch (Exception e) {
+            //TODO: handle exception
+            System.out.println(e);
+            new msg("Please verify entered data","Error",dashboard.f);
+        }
+    }
+   
 }
