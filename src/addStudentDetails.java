@@ -93,6 +93,7 @@ public class addStudentDetails extends JPanel implements MouseListener{
         opt2.setBounds(250,500,200,50);
         opt2.setLayout(null);
         opt2.add(lab2);
+        opt2.setOpaque(false);
         opt2.addMouseListener(this);
         bg.add(label);
         bg.add(nLab);

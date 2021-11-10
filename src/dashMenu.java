@@ -91,6 +91,12 @@ public class dashMenu extends JPanel implements MouseListener {
          opt6.addMouseListener(this);
          opt6.setLayout(null);
          opt6.setBounds(380,350,250,50);
+         opt1.setOpaque(false);
+         opt2.setOpaque(false);
+         opt3.setOpaque(false);
+         opt4.setOpaque(false);
+         opt5.setOpaque(false);
+         opt6.setOpaque(false);
          panel.add(lable);
          panel.add(opt1);
          panel.add(opt2);
@@ -223,7 +229,7 @@ public class dashMenu extends JPanel implements MouseListener {
          opt2.repaint();
         }else if(e.getSource()==opt3){
          opt3.reColor("#df73ff","#df73ff");
-        //  lab.setForeground(Color.black);
+         lab3.setForeground(Color.black);
          opt3.repaint();
         }else if(e.getSource()==opt4){
          opt4.reColor("#df73ff","#df73ff");
@@ -253,6 +259,7 @@ public class dashMenu extends JPanel implements MouseListener {
          opt2.repaint();
         }else if(e.getSource()==opt3){
             opt3.reColor("#f40c0c","#f40c0c");
+            lab3.setForeground(Color.white);
          opt3.repaint();
         }else if(e.getSource()==opt4){
             opt4.reColor("#f40c0c","#f40c0c");
