@@ -40,7 +40,7 @@ public class App extends JFrame implements ActionListener {
         setLayout(null); 
         setResizable(false);
         setVisible(true);
-       
+        setLocationRelativeTo(null);
     }
     public static void main(String args[]){
         new App();
@@ -60,7 +60,6 @@ public class App extends JFrame implements ActionListener {
                 new dashboard();
             }
             else {
-
                 new msg("Wrong Credentials","Error",App.this);
             }
         }

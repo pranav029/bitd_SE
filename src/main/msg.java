@@ -36,6 +36,7 @@ public class msg  extends JDialog implements ActionListener{
         setLayout(null); 
         setResizable(false);
         setVisible(true);
+        setLocationRelativeTo(null);
     }
 
     @Override

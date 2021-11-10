@@ -24,7 +24,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Vector;
 
-public class studentDisp extends JPanel implements ActionListener, MouseListener{
+public class facuDisp extends JPanel implements ActionListener, MouseListener{
     private JScrollPane pane;
     private JPanel panel,contentPane;
     private JLabel label,name,lab2;
@@ -32,12 +32,12 @@ public class studentDisp extends JPanel implements ActionListener, MouseListener
     private JTable tab;
     private Image bgImage;
     private custombtn opt2;
-    public studentDisp(){
+    public facuDisp(){
         // setTitle("All Student Records");
         JPanel bg=new panelbg("images/v915-wit-005.jpg");
         bg.setSize(700,600);
         bg.setLayout(null);
-        label=new JLabel("All Student Records");
+        label=new JLabel("All Faculty Records");
         try {
             label.setFont(Font.createFont(Font.TRUETYPE_FONT, 
             new File("images/JosefinSansRegular-x3LYV.ttf")).deriveFont(30f));
@@ -50,7 +50,7 @@ public class studentDisp extends JPanel implements ActionListener, MouseListener
         }
         label.setForeground(Color.gray);
         label.setBounds(200,10,700,60);
-        bg.add(label);
+        add(label);
         // bt=new JButton("Back to Dashboard");
         // bt.setBounds(260,500,150,30);
         // bt.addActionListener(this);
@@ -65,8 +65,7 @@ public class studentDisp extends JPanel implements ActionListener, MouseListener
         opt2.addMouseListener(this);
         DefaultTableModel def=new DefaultTableModel();
         def.addColumn("Name");
-        def.addColumn("Roll No");
-        def.addColumn("Semester");
+        def.addColumn("Faculty ID");
         tab=new JTable(def);
         pane=new JScrollPane(tab);
         pane.setBounds(40,80,600,400);
@@ -81,20 +80,18 @@ public class studentDisp extends JPanel implements ActionListener, MouseListener
         // getContentPane().add(pane, BorderLayout.CENTER);
     }
     public static void main(String args[]){
-        new studentDisp();
+        new facuDisp();
     }
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
-       
+         DefaultTableModel def=(DefaultTableModel) tab.getModel();
+         def.addRow(new Object[]{"Pranav","BTECH/60077/19","5"});
     }
     @Override
     public void mouseClicked(java.awt.event.MouseEvent e) {
         // TODO Auto-generated method stub
-        if(e.getSource()==opt2){
-            DefaultTableModel def=(DefaultTableModel) tab.getModel();
-            def.addRow(new Object[]{"Pranav","BTECH/60077/19","5"});
-        }
+        
     }
     @Override
     public void mousePressed(java.awt.event.MouseEvent e) {

@@ -1,10 +1,11 @@
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -12,11 +13,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import java.awt.event.*;
+
 import main.custombtn;
 import main.panelbg;
 import main.stack;
-public class addStudentDetails extends JPanel implements MouseListener{
+public class addFacultyDetails extends JPanel implements MouseListener{
     private JPanel bg;
     private JLabel label,nLab,rLab,adLab,geLab,caLab,seLab,DOB,hint,phLab,lab2;
     private JButton submit;
@@ -24,11 +25,11 @@ public class addStudentDetails extends JPanel implements MouseListener{
     private JTextArea name;
     private JComboBox<String> gender,category,semester,day,mon,year;
     private custombtn opt2;
-    public addStudentDetails(){
+    public addFacultyDetails(){
         bg=new panelbg("images/v915-wit-005.jpg");
         bg.setSize(700,600);
         bg.setLayout(null);
-        label=new JLabel("Add Student Details");
+        label=new JLabel("Add Faculty Details");
         label.setBounds(220,30,300,30);
         try {
             label.setFont(Font.createFont(Font.TRUETYPE_FONT, 
@@ -45,12 +46,12 @@ public class addStudentDetails extends JPanel implements MouseListener{
         nLab.setBounds(100,100,400,80);
         name=new JTextArea(3,0);
         name.setLineWrap(true);
-        name.setBounds(160,122,400,40);
-        rLab=new JLabel("Roll");
+        name.setBounds(160,122,400,30);
+        rLab=new JLabel("Faculty ID");
         rLab.setBounds(100,155,400,80);
         roll=new JTextArea(1,1);
         roll.setLineWrap(true);
-        roll.setBounds(160,178,400,40);
+        roll.setBounds(160,178,400,30);
         geLab=new JLabel("Gender");
         geLab.setBounds(100,198,400,80);
         gender=new JComboBox<String>();
@@ -59,10 +60,6 @@ public class addStudentDetails extends JPanel implements MouseListener{
         caLab.setBounds(100,238,400,80);
         category=new JComboBox<String>();
         category.setBounds(160,270,400,25);
-        seLab=new JLabel("Semester");
-        seLab.setBounds(100,278,400,80);
-        semester=new JComboBox<String>();
-        semester.setBounds(160,310,400,25);
         DOB=new JLabel("DOB");
         DOB.setBounds(100,320,400,80);
         day=new JComboBox<String>();
@@ -103,8 +100,6 @@ public class addStudentDetails extends JPanel implements MouseListener{
         bg.add(gender);
         bg.add(caLab);
         bg.add(category);
-        bg.add(seLab);
-        bg.add(semester);
         bg.add(DOB);
         bg.add(day);
         bg.add(mon);
@@ -122,7 +117,7 @@ public class addStudentDetails extends JPanel implements MouseListener{
         // setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     public static void main(String args[]){
-        new addStudentDetails();
+        new addFacultyDetails();
     }
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -132,36 +127,22 @@ public class addStudentDetails extends JPanel implements MouseListener{
     @Override
     public void mousePressed(MouseEvent e) {
         // TODO Auto-generated method stub
-        if(e.getSource()==opt2){
-            opt2.setBorder(BorderFactory.createLineBorder(Color.black));
-         opt2.repaint();
-        }
+        
     }
     @Override
     public void mouseReleased(MouseEvent e) {
         // TODO Auto-generated method stub
-        if(e.getSource()==opt2){
-            opt2.setBorder(null);
-         opt2.repaint();
-        }
+        
     }
     @Override
     public void mouseEntered(MouseEvent e) {
         // TODO Auto-generated method stub
-        if(e.getSource()==opt2){
-            opt2.reColor("#189950","#189950");
-            lab2.setForeground(Color.black);
-            opt2.repaint();
-        }
+        
     }
     @Override
     public void mouseExited(MouseEvent e) {
         // TODO Auto-generated method stub
-        if(e.getSource()==opt2){
-            opt2.reColor("#3cd10c","#3cd10c");
-            lab2.setForeground(Color.white);
-         opt2.repaint();
-        }
+        
     }
     
 }

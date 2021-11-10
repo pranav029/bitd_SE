@@ -19,12 +19,16 @@ import javax.swing.JPanel;
 
 public class dashboard extends JFrame implements MouseListener  {
     public static JFrame f;
-    private JPanel panel,userpanel;
+    private JPanel panel,userpanel,main;
     public static JPanel panel2;
     private JLabel user,copyright,type;
     private  static JLabel back;
     private ImageIcon backImg;
     public dashboard(){
+        main=new JPanel();
+        main.setSize(700,730);
+        main.setLayout(null);
+        main.setBackground(Color.decode("#291c79"));
         userpanel=new JPanel();
         userpanel.setBounds(400,9,280,50);
         userpanel.setOpaque(false);
@@ -46,20 +50,21 @@ public class dashboard extends JFrame implements MouseListener  {
         // back.setBorder(BorderFactory.createEmptyBorder());
         back.setBounds(0,10,80,30);
         back.addMouseListener(this);
-        panel=new newPanel("#171717","#171717");
+        panel=new newPanel("#291c79","#291c79");
         panel.setBounds(0,0,700,60);
         panel.setBackground(Color.darkGray);
         user =new JLabel("Random Kumar Agnihotri");
         user.setFont(new Font("Arial",Font.PLAIN,16));
         user.setBounds(420,10,250,30);
-        user.setForeground(Color.decode("#FD7F20"));
+        user.setForeground(Color.white);
         type=new JLabel("Faculty");
         type.setFont(new Font("Bank Gothic",Font.ITALIC,13));
         type.setBounds(480,25,150,30);
         type.setForeground(Color.red);
         panel.setLayout(null);
-        copyright=new JLabel("Pranavmani Tripathi");
-        copyright.setBounds(270,660,150,40);
+        copyright=new JLabel("BIT DEOGHAR COMPUTERIZATION");
+        copyright.setBounds(250,657,250,40);
+        copyright.setForeground(Color.white);
         this.panel.add(back);
         userpanel.add(user);
         userpanel.add(type);
@@ -73,14 +78,16 @@ public class dashboard extends JFrame implements MouseListener  {
         stack.Stack.push(temp);
         stack.title.push("Dashboard");
         panel2.setLayout(null);
-        add(panel);
-        add(panel2);
-        add(copyright);
+        main.add(panel);
+        main.add(panel2);
+        main.add(copyright);
+        add(main);
         setSize(700,730);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         setVisible(true);
         setResizable(false);
+        setLocationRelativeTo(null);
         if(stack.Stack.size()==1)back.setVisible(false);
         f=this;
     }

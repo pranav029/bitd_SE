@@ -1,1 +1,1 @@
- label.setFont(new Font("Arial",Font.PLAIN,30));
+ setLocationRelativeTo(null);
